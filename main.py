@@ -26,12 +26,12 @@ def contador_de_palavras(texto):
     print(f'O arquivo tem {quantidade_palavras} palavras')
 
 def substituir_char_do_texto(texto:str, substituido, substituto):
-    texto = texto.replace(substituido, substituto)
+    for char in substituido:
+        texto = texto.replace(char, substituto)
     return texto
 
 def maiores_palavras_do_texto(texto):
-    palavras = substituir_char_do_texto(texto,',','')
-    palavras = substituir_char_do_texto(palavras,'.','')
+    palavras = substituir_char_do_texto(texto,['-','.',','],'')
     palavras = palavras_do_texto(palavras)
     tamanho_das_palavras = [(palavra,len(palavra)) for palavra in palavras]
     palavras_por_tamanho = sorted(tamanho_das_palavras, key=itemgetter(1), reverse=True)
